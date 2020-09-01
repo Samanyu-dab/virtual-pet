@@ -15,14 +15,14 @@ function setup() {
   createCanvas(500, 500);
   
   database = firebase.database();
-  console.log(database)
+  console.log(database);
   
   foodObj = new Food
   dog = createSprite(250,250,10,10)
   dog.addImage(dogimg1);
   dog.scale= 0.2;
 
-  foodStock = database.ref('Food')
+  foodStock = database.ref('Food');
   foodStock.on("value",readStock)
   fill(50);
   feed = createButton("Feed The Dog")
@@ -72,7 +72,8 @@ function readStock(data){
 function feedDog(){
   dog.addImage(happyDog);
 
-  foodObj.updateFoodStock(foodObj.getFoodStock()-1);
+ // foodObj.updateFoodStock(foodObj.getFoodStock()-1);
+ foodObj.deductFood();
   database.ref('/').update({
     Food:foodObj.getFoodStock(),
     FeedTime:hour()
@@ -81,6 +82,7 @@ function feedDog(){
 
 //function to add food in stock
 function addFoods(){
+  dog.addImage(dogimg1);
   foodS++;
   database.ref('/').update({
     Food:foodS
