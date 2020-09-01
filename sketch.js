@@ -7,8 +7,8 @@ var position
 function preload()
 {
   //load images here
-  dogimg1 = loadImage("images/dogimg.png")
-  happyDog = loadImage("images/dogimg1.png")
+  dogimg1 = loadImage("images/dogImg.png")
+  happyDog = loadImage("images/dogImg1.png")
 }
 
 function setup() {
